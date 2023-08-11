@@ -1,32 +1,61 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Chat WebSocket</title>
-<!--    <script src="resources/js/sockjs-0.3.4.js"></script>-->
-<!--    <script src="resources/js/stomp.js"></script>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .chat-container {
+            margin: auto;
+            margin-top: 50px;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        .chat-messages {
+            max-height: 600px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f5f5f5;
+            height: auto;
+        }
+        .input-group {
+            margin-top: 10px;
+        }
+        #text {
+            width: 80%;
+        }
+    </style>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script type="text/javascript" src="/chat.js"></script>
 </head>
 <body onload="disconnect()">
-<div>
-    <div>
-        <input type="text" id="from" placeholder="Choose a nickname"/>
+<div class="chat-container">
+    <div class="input-group">
+        <input type="text" id="from" class="form-control" placeholder="Choose a nickname"/>
     </div>
-    <br />
-    <div>
-        <button id="connect" onclick="connect();">Connect</button>
-        <button id="disconnect" disabled="disabled" onclick="disconnect();">
+    <div class="input-group">
+        <button id="connect" class="btn btn-primary" onclick="connect();">Connect</button>
+        <button id="disconnect" class="btn btn-secondary" disabled="disabled" onclick="disconnect();">
             Disconnect
         </button>
     </div>
-    <br />
-    <div id="conversationDiv">
-        <input type="text" id="text" placeholder="Write a message..."/>
-        <button id="sendMessage" onclick="sendMessage();">Send</button>
+    <div class="input-group">
+        <input type="text" height="auto" id="text" class="form-control" placeholder="Write a message..."/>
+        <div id="conversationDiv" class="input-group-append">
+            <button id="sendMessage" class="btn btn-success" onclick="sendMessage();">Send</button>
+        </div>
+    </div>
+    <div class="chat-messages" >
         <p id="response"></p>
     </div>
 </div>
-
 </body>
 </html>
