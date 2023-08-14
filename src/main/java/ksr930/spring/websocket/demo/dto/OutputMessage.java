@@ -1,4 +1,4 @@
-package ksr930.spring.websocket.demo;
+package ksr930.spring.websocket.demo.dto;
 
 import lombok.*;
 
@@ -6,7 +6,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message {
+public class OutputMessage {
     private String from;
     private String text;
+    private String time;
 }

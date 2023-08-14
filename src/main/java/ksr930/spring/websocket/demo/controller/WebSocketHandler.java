@@ -1,14 +1,20 @@
-package ksr930.spring.websocket.demo;
+package ksr930.spring.websocket.demo.controller;
 
+import ksr930.spring.websocket.demo.dto.Message;
+import ksr930.spring.websocket.demo.dto.OutputMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 웹소켓 핸들러 - 세션 구분 X
+ */
 @Controller
-public class WebSocketHandler {
+public class WebSocketHandler extends TextWebSocketHandler {
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
